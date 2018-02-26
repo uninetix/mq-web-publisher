@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'pl.ciszemar'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-activemq')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile 'org.webjars:bootstrap:3.3.7-1'
+	compile 'org.webjars:jquery:3.2.0'
+	runtime ('org.apache.tomcat.embed:tomcat-embed-jasper')
+	// https://mvnrepository.com/artifact/org.webjars/bootstrap-datetimepicker
+	compile group: 'org.webjars', name: 'bootstrap-datetimepicker', version: '2.3.5'
+	// https://mvnrepository.com/artifact/org.webjars/jquery-validation
+	compile group: 'org.webjars', name: 'jquery-validation', version: '1.15.0'
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+
+
+}
