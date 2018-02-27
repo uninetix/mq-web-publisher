@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MqWebPublisherApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MqWebPublisherApplication.class, args);
 	}
 }
+
+
+//Jakaś zmiana potrzebna do testowego commitu
