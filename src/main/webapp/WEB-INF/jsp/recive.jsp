@@ -5,6 +5,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Test wysyłania do kolejki MQ</title>
-    <script type="text/javascript" src="js/start.js"></script>
+    <title>Test odbierania z kolejki MQ</title>
+    <script type="text/javascript" src="js/recive.js"></script>
 </head>
+<body>
+
+</body>
+</html>

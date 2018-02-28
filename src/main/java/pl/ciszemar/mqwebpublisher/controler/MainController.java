@@ -10,4 +10,14 @@ public class MainController {
     public String start() {
         return "start";
     }
+
+    @RequestMapping("/send")
+    public String send() {
+        return "send";
+    }
+
+    @RequestMapping("/recive")
+    public String recive() {
+        return "recive";
+    }
 }
