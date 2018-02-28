@@ -7,8 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Test odbierania z kolejki MQ</title>
     <script type="text/javascript" src="js/recive.js"></script>
+    <style>
+        #jsGridReceive {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-
+<div id="jsGridReceive"></div>
 </body>
 </html>

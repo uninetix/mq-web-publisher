@@ -7,10 +7,16 @@
 <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.css"
       type="text/css" rel="stylesheet">
 <link href="webjars/bootstrap-datetimepicker/2.3.5/ss/bootstrap-datetimepicker.min.css" media="all"/>
+<link href="js/jsgrid/jsgrid.css" media="all"/>
+<link href="js/jsgrid/jsgrid-theme.css" media="all"/>
+
 <script type="text/javascript" src="webjars/jquery/3.2.0/jquery.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
 <script type="text/javascript" src="webjars/bootstrap-datetimepicker/2.3.5/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="webjars/jquery-validation/1.15.0/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jsgrid/jsgrid.js"></script>
+
+
 <style>
     body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -37,6 +43,7 @@
         </div>
         <div class="navbar-collapse collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                <li class="nav-link"><a href="/">Strona startowa</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kolejki MQ<span class="caret"></span></a>
                     <ul class="dropdown-menu">
