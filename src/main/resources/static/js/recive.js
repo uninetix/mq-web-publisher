@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
-    showJsGridReceive();
+    $("#btn").click(function () {
+        alert("wciścnięty");
+        showJsGridReceive();
+    })
 
     function showJsGridReceive() {
+
         $("#jsGridReceive").jsGrid({
             height: "100%",
             width: "100%",
@@ -23,9 +27,7 @@ $(document).ready(function () {
             },
             invalidNotify: function (args) {
             },
-            controller: {
-                loadData: [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}]
-            },
+            data:  [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}],
             deleteConfirm:
                 "Czy jesteś pewny że chcesz skasować dane?",
             fields:
@@ -36,8 +38,8 @@ $(document).ready(function () {
                     {name: "birthDate", title: "Data urodzenia", type: "text", align: "left", validate: "required"}
                 ]
         });
+
         $("#jsGridReceive").css("display", "block");
-
-
     }
+
 });

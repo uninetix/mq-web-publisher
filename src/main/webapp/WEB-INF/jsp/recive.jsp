@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+<input id="btn" type="button" title="Start"/>
 <div id="jsGridReceive"></div>
 </body>
 </html>
