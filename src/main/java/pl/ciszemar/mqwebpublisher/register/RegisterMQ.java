@@ -31,6 +31,7 @@ public class RegisterMQ implements Register {
 
     @Override
     public Object receiveData() {
-        return mqUtilNew.mqReceiveMessage(URI, QUEUE_NAME);
+        Gson gson = new Gson();
+        return gson.fromJson(mqUtilNew.mqReceiveMessage(URI, QUEUE_NAME), RegisterForm.class);
     }
 }

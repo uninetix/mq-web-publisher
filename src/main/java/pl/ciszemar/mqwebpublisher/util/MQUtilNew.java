@@ -13,42 +13,42 @@ public class MQUtilNew {
     private String queueName = null;
 
     public ConnectionFactory createConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQConnectionFactory(
                 uri
         );
     }
 
     public XAConnectionFactory createXAConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQXAConnectionFactory(
                 uri
         );
     }
 
     public QueueConnectionFactory createQueueConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQConnectionFactory(
                 uri
         );
     }
 
     public XAQueueConnectionFactory createXAQueueConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQXAConnectionFactory(
                 uri
         );
     }
 
     public TopicConnectionFactory createTopicConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQConnectionFactory(
                 uri
         );
     }
 
     public XATopicConnectionFactory createXATopicConnectionFactory() {
-        if(uri == null) return null;
+        if (uri == null) return null;
         return new ActiveMQXAConnectionFactory(
                 uri
         );
@@ -119,7 +119,7 @@ public class MQUtilNew {
 
     public void sendTextMessageToQueue(String message,
                                        Session session) throws JMSException {
-        if(queueName != null) {
+        if (queueName != null) {
             Queue queue = session.createQueue(queueName);
             TextMessage msg = session.createTextMessage(message);
             MessageProducer messageProducer = session.createProducer(queue);
@@ -129,7 +129,7 @@ public class MQUtilNew {
 
     public void sendTextMessageToQueue(String message,
                                        QueueSession session) throws JMSException {
-        if(queueName != null) {
+        if (queueName != null) {
             Queue queue = session.createQueue(queueName);
             TextMessage msg = session.createTextMessage(message);
             QueueSender messageProducer = session.createSender(queue);
@@ -161,6 +161,21 @@ public class MQUtilNew {
         return consumer;
     }
 
+    public String consumeFromDestination(Session session,
+                                         String destination)
+            throws JMSException {
+        String txtMsg = "";
+        Queue queue = session.createQueue(destination);
+        MessageConsumer consumer = session.createConsumer(queue);
+        Message message = consumer.receive();
+        System.out.println("Message: " + message);
+        if (message instanceof TextMessage) {
+            txtMsg = ((TextMessage) message).getText();
+            System.out.println("txtMsg: " + txtMsg);
+        }
+        return txtMsg;
+    }
+
     public TopicSubscriber consumeFromTopic(Session session,
                                             String destination,
                                             MessageListener messageListener)
@@ -189,27 +204,24 @@ public class MQUtilNew {
     public String mqReceiveMessage(String uri, String queue) {
         this.uri = uri;
         this.queueName = queue;
-        final String[] response = new String[1];
+        String response = "";
         ConnectionFactory cf = createConnectionFactory();
         Connection conn = null;
         Session session = null;
         try {
             conn = createConnection(cf);
-            session = createSession(conn);
-            consumeFromQueue(session, queueName, (message -> {
-                if(message instanceof TextMessage) {
-                    TextMessage txtMsg = (TextMessage)message;
-                    try {
-                        response[0] = txtMsg.getText();
-                    } catch (JMSException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }));
             conn.start();
+            session = createSession(conn);
+            response = consumeFromDestination(session, queueName);
         } catch (JMSException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                conn.stop();
+            } catch (JMSException e) {
+                e.printStackTrace();
+            }
         }
-        return response[0];
+        return response;
     }
 }
