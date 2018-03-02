@@ -21,4 +21,10 @@ public class ApiController {
         register.sendForm(firstName, lastName, city, birthDate);
         return "Odpowiedz";
     }
+
+    @RequestMapping(value ="/receiveData",method = {RequestMethod.POST})
+    public @ResponseBody
+    Object receiveData(){
+        return register.receiveData();
+    }
 }

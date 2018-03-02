@@ -1,9 +1,23 @@
 $(document).ready(function () {
 
-    $("#btn").click(function () {
-        alert("wciścnięty");
+    var messages = [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}];
+
+    $("#btnReceive").click(function () {
+        $("#jsGridReceivePanel").css("display", "none");
+
+        var d = $.Deferred();
+        $.ajax({
+            url: "api/receiveData",
+            //dataType: "json",
+            type: "POST",
+            data: {}
+        }).done(function (response) {
+            d.resolve(response);
+        });
+
+        messages.unshift(d.promise());
         showJsGridReceive();
-    })
+    });
 
     function showJsGridReceive() {
 
@@ -27,7 +41,7 @@ $(document).ready(function () {
             },
             invalidNotify: function (args) {
             },
-            data:  [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}],
+            data:  messages,
             deleteConfirm:
                 "Czy jesteś pewny że chcesz skasować dane?",
             fields:
@@ -39,7 +53,7 @@ $(document).ready(function () {
                 ]
         });
 
-        $("#jsGridReceive").css("display", "block");
+        $("#jsGridReceivePanel").css("display", "block");
     }
 
 });

@@ -185,4 +185,31 @@ public class MQUtilNew {
             e.printStackTrace();
         }
     }
+
+    public String mqReceiveMessage(String uri, String queue) {
+        this.uri = uri;
+        this.queueName = queue;
+        final String[] response = new String[1];
+        ConnectionFactory cf = createConnectionFactory();
+        Connection conn = null;
+        Session session = null;
+        try {
+            conn = createConnection(cf);
+            session = createSession(conn);
+            consumeFromQueue(session, queueName, (message -> {
+                if(message instanceof TextMessage) {
+                    TextMessage txtMsg = (TextMessage)message;
+                    try {
+                        response[0] = txtMsg.getText();
+                    } catch (JMSException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }));
+            conn.start();
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+        return response[0];
+    }
 }

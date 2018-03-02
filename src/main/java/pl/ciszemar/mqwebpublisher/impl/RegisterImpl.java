@@ -21,4 +21,11 @@ public class RegisterImpl {
             e.printStackTrace();
         }
     }
+
+    public Object receiveData() {
+
+        RegisterForm registerForm = (RegisterForm) register.receiveData();
+
+        return registerForm;
+    }
 }

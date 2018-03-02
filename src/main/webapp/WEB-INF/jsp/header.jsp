@@ -80,9 +80,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img alt="Brand" height="20"
-                                                                                    src="${pageContext.request.contextPath}/decorators/img/Orange.gif">
-                Partner</a>
+            <a class="navbar-brand" href="/"><img alt="Brand" height="30" src="/img/Orange.gif"></a>
         </div>
         <div class="navbar-collapse collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">

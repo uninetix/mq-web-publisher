@@ -15,7 +15,7 @@ $(document).ready(function () {
                 }
             }).done(function () {
 
-            })
+            });
 
 
             // $("#registrationForm").validate({

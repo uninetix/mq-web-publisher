@@ -8,13 +8,34 @@
     <title>Test odbierania z kolejki MQ</title>
     <script type="text/javascript" src="js/recive.js"></script>
     <style>
-        #jsGridReceive {
+        #jsGridReceivePanel {
             display: none;
         }
     </style>
 </head>
 <body>
-<input id="btn" type="button" title="Start"/>
-<div id="jsGridReceive"></div>
+<div class="page-header">
+    <h2>Odbieranie komunikatów
+        <small></small>
+    </h2>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-3 center-block text-left">
+                <label class="control-label small" for="btnReceive"></label>
+                <button id="btnReceive" type="button" class="btn btn-primary">Pobierz komunikat z kolejki
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" id="jsGridReceivePanel">
+    <div class="panel-body">
+        <div class="row top-buffer">
+            <div id="jsGridReceive"></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

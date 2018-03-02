@@ -28,4 +28,9 @@ public class RegisterMQ implements Register {
         //mqUtil.mqSendMessage(URI, QUEUE_NAME, jsonObject);
         mqUtilNew.mqSendMessage(URI, QUEUE_NAME, jsonObject);
     }
+
+    @Override
+    public Object receiveData() {
+        return mqUtilNew.mqReceiveMessage(URI, QUEUE_NAME);
+    }
 }
