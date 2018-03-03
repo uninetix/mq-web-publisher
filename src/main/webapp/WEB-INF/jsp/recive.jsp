@@ -8,9 +8,9 @@
     <title>Test odbierania z kolejki MQ</title>
     <script type="text/javascript" src="js/recive.js"></script>
     <style>
-        #jsGridReceivePanel {
-            display: none;
-        }
+        /*#jsGridReceivePanel {*/
+            /*display: none;*/
+        /*}*/
     </style>
 </head>
 <body>

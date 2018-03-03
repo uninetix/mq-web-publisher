@@ -9,6 +9,3 @@ public class MqWebPublisherApplication {
 		SpringApplication.run(MqWebPublisherApplication.class, args);
 	}
 }
-
-
-//Jakaś zmiana potrzebna do testowego commitu

@@ -1,28 +1,30 @@
 $(document).ready(function () {
 
-    var messages = [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}];
+    var messages = []// [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}];
+
+    showJsGridReceive();
 
     $("#btnReceive").click(function () {
-        $("#jsGridReceivePanel").css("display", "none");
 
         var d = $.Deferred();
         $.ajax({
             url: "api/receiveData",
-            //dataType: "json",
+            dataType: "json",
             type: "POST",
+            async: false,
             data: {}
         }).done(function (response) {
             d.resolve(response);
+            messages.unshift(response);
         });
 
-        messages.unshift(d.promise());
         showJsGridReceive();
     });
 
     function showJsGridReceive() {
 
         $("#jsGridReceive").jsGrid({
-            height: "100%",
+            height: 600,
             width: "100%",
             sorting: true,
             paging: true,

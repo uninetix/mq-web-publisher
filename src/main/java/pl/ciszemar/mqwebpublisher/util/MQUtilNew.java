@@ -167,12 +167,11 @@ public class MQUtilNew {
         String txtMsg = "";
         Queue queue = session.createQueue(destination);
         MessageConsumer consumer = session.createConsumer(queue);
-        Message message = consumer.receive();
-        System.out.println("Message: " + message);
+        Message message = consumer.receive(500);
         if (message instanceof TextMessage) {
             txtMsg = ((TextMessage) message).getText();
-            System.out.println("txtMsg: " + txtMsg);
         }
+        consumer.close();
         return txtMsg;
     }
 
@@ -218,6 +217,9 @@ public class MQUtilNew {
         } finally {
             try {
                 conn.stop();
+                session.close();
+                conn.close();
+
             } catch (JMSException e) {
                 e.printStackTrace();
             }

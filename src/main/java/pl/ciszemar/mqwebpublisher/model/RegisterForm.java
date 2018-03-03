@@ -4,13 +4,13 @@ public class RegisterForm {
     private String firstName;
     private String lastName;
     private String city;
-    private String brithDate;
+    private String birthDate;
 
-    public RegisterForm(String firstName, String lastName, String city, String brithDate) {
+    public RegisterForm(String firstName, String lastName, String city, String birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
-        this.brithDate = brithDate;
+        this.birthDate = birthDate;
     }
 
     public String getFirstName() {
@@ -37,12 +37,12 @@ public class RegisterForm {
         this.city = city;
     }
 
-    public String getBrithDate() {
-        return brithDate;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBrithDate(String brithDate) {
-        this.brithDate = brithDate;
+    public void setBirthDate(String brithDate) {
+        this.birthDate = brithDate;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class RegisterForm {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", city='" + city + '\'' +
-                ", brithDate='" + brithDate + '\'' +
+                ", brithDate='" + birthDate + '\'' +
                 '}';
     }
 }

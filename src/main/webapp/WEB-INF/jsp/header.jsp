@@ -7,8 +7,10 @@
     <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.css"
           type="text/css" rel="stylesheet">
     <link href="webjars/bootstrap-datetimepicker/2.3.5/ss/bootstrap-datetimepicker.min.css" media="all"/>
-    <link href="css/js-grid/jsgrid.min.css" type="text/css" rel="stylesheet">
-    <link href="css/js-grid/jsgrid-theme.min.css" type="text/css" rel="stylesheet">
+    <%--<link href="css/js-grid/jsgrid.min.css" type="text/css" rel="stylesheet">--%>
+    <%--<link href="css/js-grid/jsgrid-theme.min.css" type="text/css" rel="stylesheet">--%>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 
 
     <script type="text/javascript" src="webjars/jquery/3.2.0/jquery.js"></script>
@@ -16,7 +18,8 @@
     <script type="text/javascript"
             src="webjars/bootstrap-datetimepicker/2.3.5/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="webjars/jquery-validation/1.15.0/jquery.validate.js"></script>
-    <script type="text/javascript" src="js/js-grid/jsgrid.min.js"></script>
+    <%--<script type="text/javascript" src="js/js-grid/jsgrid.min.js"></script>--%>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 
     <style>
         body {
@@ -68,6 +71,7 @@
         }
 
     </style>
+    <title>Test klienta kolejek MQ</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
