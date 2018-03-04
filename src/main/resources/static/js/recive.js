@@ -1,11 +1,33 @@
 $(document).ready(function () {
 
-    var messages = []// [{"firstName": "Jan", "lastName": "Kowalski", "city": "Wrocław", "birthDate": "2017-01-01"}];
+    var messages = [];
+    var intervalID;
 
+    $("#btnStopReceiving").attr("disabled", true);
     showJsGridReceive();
 
     $("#btnReceive").click(function () {
+        getMessage();
+    });
 
+    $("#btnStartReceiving").click(function () {
+        $("#btnStartReceiving").attr("disabled", true);
+        $("#btnStopReceiving").attr("disabled", false);
+        var interval;
+        if ($("#interval").val() == null) interwal = 1
+        else interval = $("#interval").val();
+        intervalID = setInterval(function () {
+            getMessage();
+        }, interval * 1000);
+    });
+
+    $("#btnStopReceiving").click(function () {
+        clearInterval(intervalID);
+        $("#btnStartReceiving").attr("disabled", false);
+        $("#btnStopReceiving").attr("disabled", true);
+    });
+
+    function getMessage() {
         var d = $.Deferred();
         $.ajax({
             url: "api/receiveData",
@@ -15,11 +37,13 @@ $(document).ready(function () {
             data: {}
         }).done(function (response) {
             d.resolve(response);
-            messages.unshift(response);
+            if (response[0] !== null)
+                messages.unshift(response[0]);
+            showJsGridReceive();
+        }).fail(function () {
+            clearInterval(intervalID);
         });
-
-        showJsGridReceive();
-    });
+    }
 
     function showJsGridReceive() {
 
@@ -43,7 +67,7 @@ $(document).ready(function () {
             },
             invalidNotify: function (args) {
             },
-            data:  messages,
+            data: messages,
             deleteConfirm:
                 "Czy jesteś pewny że chcesz skasować dane?",
             fields:

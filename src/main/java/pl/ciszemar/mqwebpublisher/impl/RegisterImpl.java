@@ -6,6 +6,8 @@ import pl.ciszemar.mqwebpublisher.model.RegisterForm;
 import pl.ciszemar.mqwebpublisher.register.Register;
 
 import javax.jms.JMSException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class RegisterImpl {
@@ -22,10 +24,15 @@ public class RegisterImpl {
         }
     }
 
-    public Object receiveData() {
+    public List<Object> receiveData() {
 
-        RegisterForm registerForm = (RegisterForm) register.receiveData();
+        List<Object> ol = new ArrayList<>();
 
-        return registerForm;
+        for(Object item : register.receiveData()) {
+            ol.add(item);
+        }
+        //RegisterForm registerForm = (RegisterForm) register.receiveData();
+
+        return ol;
     }
 }

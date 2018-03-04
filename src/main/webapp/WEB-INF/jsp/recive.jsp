@@ -8,7 +8,7 @@
     <title>Test odbierania z kolejki MQ</title>
     <script type="text/javascript" src="js/recive.js"></script>
     <style>
-        /*#jsGridReceivePanel {*/
+        /*#btnStopReceiving {*/
             /*display: none;*/
         /*}*/
     </style>
@@ -24,8 +24,25 @@
         <div class="row">
             <div class="col-lg-3 center-block text-left">
                 <label class="control-label small" for="btnReceive"></label>
-                <button id="btnReceive" type="button" class="btn btn-primary">Pobierz komunikat z kolejki
+                <button id="btnReceive" type="button" class="btn btn-primary">Pobierz jeden komunikat z kolejki
                 </button>
+            </div>
+            <div class="col-lg-3 center-block text-left">
+                <label class="control-label small" for="btnStartReceiving"></label>
+                <button id="btnStartReceiving" type="button" class="btn btn-primary">Ciągłe pobieranie START
+                </button>
+            </div>
+            <div class="col-lg-3 center-block text-left">
+                <label class="control-label small" for="btnStopReceiving"></label>
+                <button id="btnStopReceiving" type="button" class="btn btn-primary">Ciągłe pobieranie STOP
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 center-block text-center"></div>
+            <div class="col-lg-3 center-block text-center">
+                <label class="control-label small" for="interval">Interwał [s] (wartość domyślna 1s)</label>
+                <input id="interval" name ="interval" type="text" class="form-control input-sm" aria-label="..."/>
             </div>
         </div>
     </div>

@@ -7,7 +7,8 @@ import pl.ciszemar.mqwebpublisher.model.RegisterForm;
 import pl.ciszemar.mqwebpublisher.util.MQUtil;
 import pl.ciszemar.mqwebpublisher.util.MQUtilNew;
 
-import javax.jms.JMSException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class RegisterMQ implements Register {
@@ -30,8 +31,10 @@ public class RegisterMQ implements Register {
     }
 
     @Override
-    public Object receiveData() {
+    public List<Object> receiveData() {
         Gson gson = new Gson();
-        return gson.fromJson(mqUtilNew.mqReceiveMessage(URI, QUEUE_NAME), RegisterForm.class);
+        List<Object> ol = new ArrayList<>();
+        ol.add(gson.fromJson(mqUtilNew.mqReceiveMessage(URI, QUEUE_NAME), RegisterForm.class));
+        return ol;
     }
 }

@@ -55,6 +55,12 @@
                         </script>
                     </div>
                 </div>
+                <div class = "row top-buffer">
+                    <div class="col-lg-3 center-block text-center">
+                        <label class="control-label small" for="quantity">Ilość komunikatów: </label>
+                        <input id="quantity" name="quantity" type="text" class="form-control input-sm" aria-label="..."/>
+                    </div>
+                </div>
                 <br>
                 <div class="row top-buffer">
                     <div class="col-lg-12 center-block text-left">
