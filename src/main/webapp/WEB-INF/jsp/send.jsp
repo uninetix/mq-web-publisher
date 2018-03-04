@@ -57,7 +57,7 @@
                 </div>
                 <div class = "row top-buffer">
                     <div class="col-lg-3 center-block text-center">
-                        <label class="control-label small" for="quantity">Ilość komunikatów: </label>
+                        <label class="control-label small" for="quantity">Ilość komunikatów: (warość domyślna: 1)</label>
                         <input id="quantity" name="quantity" type="text" class="form-control input-sm" aria-label="..."/>
                     </div>
                 </div>

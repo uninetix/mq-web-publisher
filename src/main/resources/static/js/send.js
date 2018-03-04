@@ -11,7 +11,8 @@ $(document).ready(function () {
                     firstName: $("#firstName").val(),
                     lastName: $("#lastName").val(),
                     city: $("#city").val(),
-                    birthDate: $("#birthDateVal").val()
+                    birthDate: $("#birthDateVal").val(),
+                    quantity: $("#quantity").val() != "" ? $("#quantity").val() : "1"
                 }
             }).done(function () {
 

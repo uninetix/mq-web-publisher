@@ -186,7 +186,7 @@ public class MQUtilNew {
         return consumer;
     }
 
-    public void mqSendMessage(String uri, String queue, String body) {
+    public void mqSendMessage(String uri, String queue, String body, int quantity) {
         this.uri = uri;
         this.queueName = queue;
         ConnectionFactory cf = createConnectionFactory();
@@ -194,7 +194,8 @@ public class MQUtilNew {
         try {
             conn = createConnection(cf);
             Session session = createSession(conn);
-            sendTextMessageToQueue(body, session);
+            for (int i = 0; i < quantity; i++)
+                sendTextMessageToQueue(body, session);
         } catch (JMSException e) {
             e.printStackTrace();
         }

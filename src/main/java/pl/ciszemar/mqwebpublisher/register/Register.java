@@ -6,7 +6,7 @@ import javax.jms.JMSException;
 import java.util.List;
 
 public interface Register {
-    public void sendRegisterForm(RegisterForm registerForm) throws JMSException;
+    public void sendRegisterForm(RegisterForm registerForm, int quantity) throws JMSException;
 
     List<Object> receiveData();
 }

@@ -23,11 +23,11 @@ public class RegisterMQ implements Register {
     MQUtilNew mqUtilNew;
 
     @Override
-    public void sendRegisterForm(RegisterForm registerForm) {
+    public void sendRegisterForm(RegisterForm registerForm, int quantity) {
         Gson gson = new Gson();
         String jsonObject = gson.toJson(registerForm);
         //mqUtil.mqSendMessage(URI, QUEUE_NAME, jsonObject);
-        mqUtilNew.mqSendMessage(URI, QUEUE_NAME, jsonObject);
+        mqUtilNew.mqSendMessage(URI, QUEUE_NAME, jsonObject, quantity);
     }
 
     @Override

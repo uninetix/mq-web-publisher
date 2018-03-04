@@ -15,10 +15,11 @@ public class RegisterImpl {
     @Autowired
     Register register;
 
-    public void sendForm(String firstName, String larstName, String city,String birthDate){
+    public void sendForm(String firstName, String larstName, String city, String birthDate, String quantity){
         RegisterForm registerForm = new RegisterForm(firstName, larstName, city, birthDate);
+        int quantityInt = Integer.valueOf(quantity);
         try {
-            register.sendRegisterForm(registerForm);
+            register.sendRegisterForm(registerForm, quantityInt);
         } catch (JMSException e) {
             e.printStackTrace();
         }
