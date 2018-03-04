@@ -2,9 +2,18 @@ package pl.ciszemar.mqwebpublisher.util;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ActiveMQXAConnectionFactory;
+import org.apache.activemq.broker.jmx.DestinationViewMBean;
 import org.springframework.stereotype.Component;
 
 import javax.jms.*;
+import javax.management.MBeanServerConnection;
+import javax.management.MBeanServerInvocationHandler;
+import javax.management.MalformedObjectNameException;
+import javax.management.ObjectName;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
+import java.io.IOException;
 
 @Component
 public class MQUtilNew {
@@ -167,7 +176,7 @@ public class MQUtilNew {
         String txtMsg = "";
         Queue queue = session.createQueue(destination);
         MessageConsumer consumer = session.createConsumer(queue);
-        Message message = consumer.receive(500);
+        Message message = consumer.receive(50);
         if (message instanceof TextMessage) {
             txtMsg = ((TextMessage) message).getText();
         }
@@ -226,5 +235,22 @@ public class MQUtilNew {
             }
         }
         return response;
+    }
+
+    private Long getQueueSize(Connection conn, String url, String queueName)  {
+        JMXConnector connector = null;
+        long queueSize = -1L;
+        try {
+            connector = JMXConnectorFactory.connect(new JMXServiceURL(url));
+            MBeanServerConnection connection = connector.getMBeanServerConnection();
+            ObjectName nameConsumers = new ObjectName("org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName=" + queueName);
+            DestinationViewMBean mbView = MBeanServerInvocationHandler.newProxyInstance(connection, nameConsumers, DestinationViewMBean.class, true);
+            queueSize = mbView.getQueueSize();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (MalformedObjectNameException e) {
+            e.printStackTrace();
+        }
+        return queueSize;
     }
 }
